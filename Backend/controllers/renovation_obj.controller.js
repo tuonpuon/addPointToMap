@@ -1,9 +1,5 @@
 const renovation_obj = require('../models/renovation_obj.model');
 
-exports.test = function (req, res) {
-    res.send('Greetings from the Test controller!');
-};
-
 exports.renovation_obj_create = function (req, res, next) {
     let renovationObj = new renovation_obj(
         {
@@ -34,3 +30,19 @@ exports.renovation_objs = function (req, res) {
         res.send(renovation_objs);
     })
 };
+
+exports.renovation_obj_update = function (req, res) {
+    renovation_obj.findByIdAndUpdate(req.params.id, {$set:req.body},
+        function (err, renovation) {
+            if (err) return next(err);
+            res.send('renovation ' + req.params.id + ' updated!');
+        })
+}
+
+exports.renovation_obj_delete = function (req, res) {
+    renovation_obj.findByIdAndRemove(req.params.id,
+        function (err) {
+            if (err) return next(err);
+            res.send('renovation ' + req.params.id + ' deleted!');
+        })
+}
