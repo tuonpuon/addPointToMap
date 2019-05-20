@@ -45,7 +45,7 @@
                         <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
                         <small class="text-muted">Donec id elit non mi porta.</small>
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action active">
+                    <a href="#" class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">List group item heading</h5>
                         </div>
@@ -84,14 +84,21 @@
             </div>
             <div class="col-sm-8 mt-3 h-100">
                 <div class="row align-items-start h-75">
-                    <div id="map" class="col map h-75">
-                    </div>
+                    <div id="map" class="col map h-75"></div>
                 </div>
                 <div class="row align-items-end h-auto mt-n5">
                     <div class="col h-100 mt-n5">
                         <div class="media mt-n5 ">
-                            <div class="media-body">
-                                <h5 class="mt-0 pb-2 border-bottom">Top-aligned media</h5>
+                            <div class="media-body mt-n2">
+                                <div class="pb-2 border-bottom">
+                                    <h5>Top-aligned media 
+                                        <span class="float-right mt-n3">
+                                            <button type="button" class="btn btn-outline-primary btn-lg" data-toggle="modal" data-target="#createModal">Lägg Till</button>
+                                            <button type="button" class="btn btn-outline-success btn-lg" data-toggle="modal" data-target="#createModal">Redigera</button>
+                                            <button type="button" class="btn btn-outline-danger btn-lg" data-toggle="modal" data-target="#createModal">Ta Bort</button>
+                                        </span>
+                                    </h5>
+                                </div>
                                 <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
                                 <p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
                             </div>
@@ -102,6 +109,27 @@
         </div>
     </div>
     <!-- main: end -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="createModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
