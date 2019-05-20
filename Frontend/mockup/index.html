@@ -14,13 +14,13 @@
 </head>
 <body class="vh-100">
     <!-- navbar: start -->
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-light bg-light position-sticky">
             <a class="navbar-brand" href="#">Navbar</a>
     </nav>
     <!-- navbar: end -->
 
     <!-- main: start -->
-    <div class="container-fluid h-75">
+    <div class="container-fluid h-100">
         <div class="row h-100">
             <div class="col-sm-4 border-right h-100">
                 <div class="list-group overflow-auto mt-3 mb-2 h-100">
@@ -82,15 +82,19 @@
                     </a>
                 </div>
             </div>
-            <div class="col-sm-8 border-left mt-3 mb-2 h-100">
-                <div class="row align-items-start">
-                    <div id="map" class="col map">
+            <div class="col-sm-8 mt-3 h-100">
+                <div class="row align-items-start h-75">
+                    <div id="map" class="col map h-75">
                     </div>
                 </div>
-                <div class="row align-items-end">
-                    <div class="col">
-                        <div class="alert alert-dark" role="alert">
-                                A simple dark alert—check it out!
+                <div class="row align-items-end h-auto mt-n5">
+                    <div class="col h-100 mt-n5">
+                        <div class="media mt-n5 ">
+                            <div class="media-body">
+                                <h5 class="mt-0 pb-2 border-bottom">Top-aligned media</h5>
+                                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                                <p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                            </div>
                         </div>
                     </div>                    
                 </div>
