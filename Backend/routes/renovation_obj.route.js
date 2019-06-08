@@ -4,7 +4,7 @@ const router = express.Router();
 const renovation_obj_controller = require('../controllers/renovation_obj.controller');
 
 router.get('/all', renovation_obj_controller.renovation_objs);
-router.get('/:id', renovation_obj_controller.renovation_obj_details);
+router.get('/id/:id', renovation_obj_controller.renovation_obj_details);
 
 router.put('/update/:id', renovation_obj_controller.renovation_obj_update);
 
