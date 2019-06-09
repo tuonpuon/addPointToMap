@@ -16,6 +16,7 @@ import OSM from "ol/source/OSM.js";
 import * as proj from "ol/proj";
 
 import ShowData from "@/components/ShowData.vue";
+import { serverBus } from "../main";
 
 export default {
   name: "Map",
@@ -27,7 +28,7 @@ export default {
   },
   methods: {
     createMap: function() {
-      new Map({
+      this.map = new Map({
         target: "map",
         layers: [
           new TileLayer({
@@ -39,7 +40,24 @@ export default {
           zoom: 4
         })
       });
+    },
+    flyToPoint: ticket => {
+      console.log("from map", ticket);
     }
+  },
+  data: () => {
+    return {
+      selectedTicket: null,
+      map: null
+    };
+  },
+  created() {
+    let self = this;
+    // Using the server bus
+    serverBus.$on("dataFromTicket", function(ticket) {
+      self.selectedTicket = ticket;
+      self.flyToPoint(ticket);
+    });
   },
   mounted() {
     this.createMap();
