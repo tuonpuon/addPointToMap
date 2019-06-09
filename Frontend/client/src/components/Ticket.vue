@@ -1,60 +1,11 @@
 <template>
-    <div>
-        <a href="#" class="list-group-item list-group-item-action active">
+    <div class="mt-n1">
+        <a href="#" v-for="item in data" :key="item._id" v-on:click="selected = item._id" v-bind:class="{active:item._id == selected}" class="list-group-item list-group-item-action mt-1" :attr-cords="item.geo_location">
             <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">List group item heading</h5>
+                <h5 class="mb-1">{{ item.title }}</h5>
             </div>
-            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-            <small>Donec id elit non mi porta.</small>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">List group item heading</h5>
-            </div>
-            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-            <small class="text-muted">Donec id elit non mi porta.</small>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">List group item heading</h5>
-            </div>
-            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-            <small class="text-muted">Donec id elit non mi porta.</small>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">List group item heading</h5>
-            </div>
-            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-            <small>Donec id elit non mi porta.</small>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">List group item heading</h5>
-            </div>
-            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-            <small class="text-muted">Donec id elit non mi porta.</small>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">List group item heading</h5>
-            </div>
-            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-            <small class="text-muted">Donec id elit non mi porta.</small>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">List group item heading</h5>
-            </div>
-            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-            <small class="text-muted">Donec id elit non mi porta.</small>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">List group item heading</h5>
-            </div>
-            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-            <small class="text-muted">Donec id elit non mi porta.</small>
+            <p class="mb-1">{{ item.description }}</p>
+            <small> {{ item.last_edited }}</small>
         </a>
     </div>
 </template>
@@ -63,7 +14,17 @@
 export default {
   name: "Ticket",
   props: {
-    msg: String
+    data: Array
+  },
+  data: function() {
+    return {
+        selected: undefined
+    }
+  },
+  methods: {
+    log: function() {
+        console.log('yat');
+    }
   }
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="col-sm-4 h-100">
     <div class="list-group overflow-auto mt-3 h-100">
-        <Ticket></Ticket>
+        <Ticket :data=data></Ticket>
     </div>
   </div>
 </template>
@@ -16,7 +16,7 @@ export default {
     Ticket
   },
   props: {
-    msg: String
+    data: Array
   }
 };
 </script>
