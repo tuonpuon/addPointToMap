@@ -1,6 +1,5 @@
 <template>
-  <div class="col-sm-4 h-100">
-    <div class="list-group overflow-auto mt-3 h-100">
+    <div>
         <a href="#" class="list-group-item list-group-item-action active">
             <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">List group item heading</h5>
@@ -58,12 +57,11 @@
             <small class="text-muted">Donec id elit non mi porta.</small>
         </a>
     </div>
-  </div>
 </template>
 
 <script>
 export default {
-  name: "Tickets",
+  name: "Ticket",
   props: {
     msg: String
   }
