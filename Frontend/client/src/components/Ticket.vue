@@ -2,9 +2,9 @@
   <div class="mt-n1">
     <a
       href="#"
-      v-for="item in data"
+      v-for="item in ticketData"
       :key="item._id"
-      v-on:click="setSelected(item._id) + findInData()"
+      v-on:click="setSelected(item._id) + findInData() + flyToPoint()"
       v-bind:class="{ active: item._id == selected }"
       class="list-group-item list-group-item-action mt-1"
     >
@@ -27,22 +27,41 @@ export default {
   },
   data: function() {
     return {
-      selected: undefined
+      selected: undefined,
+      ticketData: Array,
+      selectedTicketData: Array,
     };
+  },
+  created() {
+    serverBus.$on("data", data => {
+       this.ticketData = data;
+    });
+    serverBus.$on("clickedInMap", id => {
+      this.setSelected(id);
+      this.findInData();
+    });
   },
   methods: {
     findInData: function() {
-      var result = this.data.filter(obj => {
+      var result = this.ticketData.filter(obj => {
         return obj._id === this.selected;
       });
       if (typeof result !== "undefined") {
         result[0].created = result[0].created.split('T')[0];
         result[0].last_edited = result[0].last_edited.split('T')[0];
+        this.selectedTicketData = result;
         serverBus.$emit("dataFromTicket", result);
       }
     },
     setSelected: function(id) {
       this.selected = id;
+    },
+    flyToPoint: function() {
+      serverBus.$emit("flyToPoint", 
+        {'ticket': this.selectedTicketData,
+        'duration': 1000, 
+        'zoom': 12
+      });
     }
   }
 };

@@ -1,7 +1,7 @@
 <template>
   <div class="col-sm-4 h-100">
     <div class="list-group overflow-auto mt-3 h-100">
-      <Ticket :data="data"></Ticket>
+      <Ticket></Ticket>
     </div>
   </div>
 </template>
@@ -14,8 +14,5 @@ export default {
   components: {
     Ticket
   },
-  props: {
-    data: Array
-  }
 };
 </script>
