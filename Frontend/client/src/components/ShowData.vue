@@ -12,7 +12,7 @@
                   class="btn btn-outline-primary btn-sm ml-1"
                   data-toggle="modal"
                   data-target="#createModal"
-                  v-on:click="selectedType('Add')"
+                  v-on:click="selectedType({add: true})"
                 >
                   Lägg Till
                 </button>
@@ -21,7 +21,7 @@
                   class="btn btn-outline-success btn-sm ml-1"
                   data-toggle="modal"
                   data-target="#createModal"
-                  v-on:click="selectedType('Update')"
+                  v-on:click="selectedType({update: true})"
                 >
                   Redigera
                 </button>
@@ -38,9 +38,11 @@
           <p>
             {{ item.description }}
           </p>
-          <p>
-            {{ item.created }}
-            {{ item.last_edited }}
+          <p class="float-left">
+            Skapad: {{ item.created }}
+          </p>
+          <p class="float-right">
+            Uppdaterad: {{ item.last_edited }}
           </p>
         </div>
       </div>
@@ -59,12 +61,22 @@ export default {
   data: () => {
     return {
       selectedTicket: Array,
-      selectedEvent: String
+      selectedEvent: Object
     };
   },
   methods: {
     selectedType: function(selected) {
       this.selectedEvent = selected;
+      if (typeof this.selectedEvent !== "undefined") {
+        this.selectedTicket[0].type = selected;
+        let eventModalData;
+        if (selected.add) {
+          eventModalData = [{type: selected}];
+        } else {
+          eventModalData = this.selectedTicket;
+        }  
+        serverBus.$emit("typeOffEventModalData", eventModalData);
+      }
     }
   },
   created() {

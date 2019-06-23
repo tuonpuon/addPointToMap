@@ -36,6 +36,8 @@ export default {
         return obj._id === this.selected;
       });
       if (typeof result !== "undefined") {
+        result[0].created = result[0].created.split('T')[0];
+        result[0].last_edited = result[0].last_edited.split('T')[0];
         serverBus.$emit("dataFromTicket", result);
       }
     },
